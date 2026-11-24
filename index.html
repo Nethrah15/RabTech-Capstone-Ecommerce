@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RABTECH Capstone - ShopKart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🛍️ ShopKart - RABTECH Capstone</h1>
+    <div>
+      <span id="userName">Guest</span>
+      <button id="loginBtn" onclick="login()">Login</button>
+      <button onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+    </div>
+  </header>
+
+  <!-- Search + Category + Sort + Add Product -->
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search products...">
+    <select id="categoryFilter" onchange="applyFilters()">
+      <option value="all">All Categories</option>
+      <option value="men's clothing">Men</option>
+      <option value="women's clothing">Women</option>
+      <option value="jewelery">Jewelery</option>
+      <option value="electronics">Electronics</option>
+    </select>
+    <select id="sortSelect" onchange="applyFilters()">
+      <option value="default">Sort: Default</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+    </select>
+    <button onclick="showAddForm()">+ Add Product (CRUD)</button>
+  </div>
+
+  <!-- Add / Edit Form (CRUD) -->
+  <form id="productForm" style="display:none;">
+    <h3>Add / Edit Product</h3>
+    <input type="text" id="pTitle" placeholder="Product Title" required>
+    <input type="number" id="pPrice" placeholder="Price" required>
+    <input type="text" id="pCategory" placeholder="Category" required>
+    <input type="text" id="pImage" placeholder="Image URL (optional)">
+    <button type="submit">Save Product</button>
+    <button type="button" onclick="hideAddForm()">Cancel</button>
+  </form>
+
+  <div id="loading">Loading products...</div>
+  <div id="error" style="display:none;"></div>
+  <main id="productGrid"></main>
+
+  <!-- Cart -->
+  <div id="cartBox" style="display:none;">
+    <h2>Your Cart</h2>
+    <ul id="cartList"></ul>
+    <h3 id="cartTotal">Total: $0</h3>
+    <button onclick="clearCart()">Clear Cart</button>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
